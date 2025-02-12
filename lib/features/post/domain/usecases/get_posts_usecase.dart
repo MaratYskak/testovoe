@@ -6,7 +6,7 @@ class GetPostsUsecase {
 
   GetPostsUsecase({required this.repository});
 
-  Stream<List<PostEntity>> call(PostEntity post) {
-    return repository.getPosts(post);
+  Stream<List<PostEntity>> call() {
+    return repository.getPosts();
   }
 }
