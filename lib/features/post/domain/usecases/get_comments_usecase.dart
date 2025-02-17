@@ -4,7 +4,7 @@ import 'package:testovoe/features/post/domain/repository/post_repository.dart';
 class GetCommentsUsecase {
   final PostRepository repository;
 
-  GetCommentsUsecase(this.repository);
+  GetCommentsUsecase({required this.repository});
 
   Stream<List<CommentEntity>> call() {
     return repository.getComments();
