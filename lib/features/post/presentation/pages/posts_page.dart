@@ -34,7 +34,8 @@ class _PostsPageState extends State<PostsPage> {
                 final post = state.posts[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, PageConst.singlePostPage);
+                    Navigator.pushNamed(context, PageConst.singlePostPage,
+                        arguments: {'postId': post.id, 'post': post.body});
                   },
                   child: Card(
                     color: const Color.fromARGB(255, 34, 59, 102),

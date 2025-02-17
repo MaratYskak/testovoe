@@ -9,7 +9,7 @@ class OnGenerateRoute {
 
     switch (name) {
       case PageConst.singlePostPage:
-        return materialPageBuilder(SinglePostPage());
+        return materialPageBuilder(SinglePostPage(postId_and_post: args as Map<String, Object?>));
       // {
       //   if (args is String) {
       //     return materialPageBuilder(SinglePostPage());
