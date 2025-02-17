@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testovoe/features/post/presentation/cubit/posts_cubit.dart';
+import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 
 class PostsPage extends StatefulWidget {
   const PostsPage({super.key});

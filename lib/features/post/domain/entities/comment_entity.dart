@@ -7,7 +7,13 @@ class CommentEntity extends Equatable {
   final String? email;
   final String? body;
 
-  CommentEntity(this.postId, this.id, this.name, this.email, this.body);
+  const CommentEntity({
+    required this.postId,
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.body,
+  });
 
   @override
   List<Object?> get props => [postId, id, name, email, body];
