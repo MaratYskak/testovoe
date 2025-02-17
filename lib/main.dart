@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                 } else {
                   Center(
                     child: Text(
-                      'failed',
+                      'posts failed to load',
                       style: TextStyle(color: Colors.white),
                     ),
                   );

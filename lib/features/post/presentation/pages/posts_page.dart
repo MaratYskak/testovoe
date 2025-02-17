@@ -32,6 +32,7 @@ class _PostsPageState extends State<PostsPage> {
               itemBuilder: (context, index) {
                 final post = state.posts[index];
                 return Card(
+                  color: const Color.fromARGB(255, 34, 59, 102),
                   elevation: 4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
