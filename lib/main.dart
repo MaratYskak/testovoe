@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/theme/style.dart';
+import 'package:testovoe/features/post/presentation/cubit/comments/comments_cubit.dart';
 import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
 import 'package:testovoe/routes/on_generate_routes.dart';
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => di.sl<PostsCubit>()..getPosts(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<CommentsCubit>(),
         ),
       ],
       child: MaterialApp(

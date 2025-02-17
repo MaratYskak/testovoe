@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testovoe/features/app/const/page_const.dart';
 import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 
 class PostsPage extends StatefulWidget {
@@ -31,32 +32,37 @@ class _PostsPageState extends State<PostsPage> {
               itemCount: state.posts.length,
               itemBuilder: (context, index) {
                 final post = state.posts[index];
-                return Card(
-                  color: const Color.fromARGB(255, 34, 59, 102),
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          post.title ?? "Без заголовка",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, PageConst.singlePostPage);
+                  },
+                  child: Card(
+                    color: const Color.fromARGB(255, 34, 59, 102),
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            post.title ?? "Без заголовка",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          post.body ?? "Нет содержания",
-                          style: TextStyle(
-                            fontSize: 16,
+                          SizedBox(height: 8),
+                          Text(
+                            post.body ?? "Нет содержания",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testovoe/features/app/const/page_const.dart';
+import 'package:testovoe/features/post/presentation/pages/single_post_page.dart';
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {
@@ -6,16 +8,15 @@ class OnGenerateRoute {
     final name = settings.name;
 
     switch (name) {
-      // case PageConst.contactUsersPage:
-      //   {
-      //     if(args is String) {
-      //       return materialPageBuilder(ContactsPage(uid: args,));
-
-      //     } else {
-      //       return materialPageBuilder( const ErrorPage());
-
-      //     }
+      case PageConst.singlePostPage:
+        return materialPageBuilder(SinglePostPage());
+      // {
+      //   if (args is String) {
+      //     return materialPageBuilder(SinglePostPage());
+      //   } else {
+      //     return materialPageBuilder(const ErrorPage());
       //   }
+      // }
     }
   }
 }
