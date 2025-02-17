@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/theme/style.dart';
+import 'package:testovoe/features/post/presentation/cubit/posts_cubit.dart';
+import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
 import 'package:testovoe/routes/on_generate_routes.dart';
 import 'main_injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
@@ -19,7 +21,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [],
+      providers: [
+        BlocProvider(
+          create: (context) => di.sl<PostsCubit>()..getPosts(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
@@ -32,7 +38,25 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: "/",
         onGenerateRoute: OnGenerateRoute.route,
-        routes: {},
+        routes: {
+          "/": (context) {
+            return BlocBuilder<PostsCubit, PostsState>(
+              builder: (context, state) {
+                if (state is PostsLoaded) {
+                  return PostsPage();
+                } else {
+                  Center(
+                    child: Text(
+                      'failed',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
+            );
+          },
+        },
       ),
     );
   }

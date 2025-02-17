@@ -15,12 +15,14 @@ class PostsCubit extends Cubit<PostsState> {
   Future<void> getPosts() async {
     try {
       emit(PostsLoading());
+      print('ПОСТЫ ГРУЗЯТСЯ');
 
       final streamResponse = getPostsUsecase.call();
       streamResponse.listen((posts) {
         emit(PostsLoaded(posts: posts));
       });
     } on SocketException {
+      print('ВОТ ЭТА ОШИБКА');
       emit(PostsFailure());
     } catch (_) {
       emit(PostsFailure());
