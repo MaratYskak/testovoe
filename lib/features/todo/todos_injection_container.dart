@@ -1,11 +1,3 @@
-import 'package:testovoe/features/post/data/remote/post_remote_data_source.dart';
-import 'package:testovoe/features/post/data/remote/post_remote_data_source_impl.dart';
-import 'package:testovoe/features/post/data/repository/post_repository_impl.dart';
-import 'package:testovoe/features/post/domain/repository/post_repository.dart';
-import 'package:testovoe/features/post/domain/usecases/get_comments_usecase.dart';
-import 'package:testovoe/features/post/domain/usecases/get_posts_usecase.dart';
-import 'package:testovoe/features/post/presentation/cubit/comments/comments_cubit.dart';
-import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 import 'package:testovoe/features/todo/data/remote/todo_remote_data_source.dart';
 import 'package:testovoe/features/todo/data/remote/todo_remote_data_source_impl.dart';
 import 'package:testovoe/features/todo/data/repository/todo_repository_impl.dart';
