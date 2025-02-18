@@ -28,8 +28,8 @@ class _PhotosPageState extends State<PhotosPage> {
                 final album = state.albums[index];
                 return GestureDetector(
                   onTap: () {
-                    // Navigator.pushNamed(context, PageConst.singlePostPage,
-                    //     arguments: {'postId': post.id, 'post': post.body});
+                    Navigator.pushNamed(context, PageConst.singleAlbumPage,
+                        arguments: {'albumId': album.id, 'title': album.title});
                   },
                   child: Card(
                     color: const Color.fromARGB(255, 34, 59, 102),

@@ -8,6 +8,9 @@ class PageConst {
   // * Single Post
   static const String singlePostPage = "singlePostPage";
 
+  // * Single Album
+  static const String singleAlbumPage = "singleAlbumPage";
+
   // * Home
   static const String homePage = "homePage";
 

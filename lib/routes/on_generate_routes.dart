@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/const/page_const.dart';
+import 'package:testovoe/features/photo/presentation/pages/single_album_page.dart';
 import 'package:testovoe/features/post/presentation/pages/single_post_page.dart';
 
 class OnGenerateRoute {
@@ -17,6 +18,11 @@ class OnGenerateRoute {
       //     return materialPageBuilder(const ErrorPage());
       //   }
       // }
+      case PageConst.singleAlbumPage:
+        final Map<String, Object?> mapa = args as Map<String, Object?>;
+        final int id = mapa['albumId'] as int;
+        final String title = mapa['title'] as String;
+        return materialPageBuilder(SingleAlbumPage(albumId: id, title: title));
     }
   }
 }
