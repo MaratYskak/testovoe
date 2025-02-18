@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/theme/style.dart';
 import 'package:testovoe/features/photo/presentation/pages/photos_page.dart';
 import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
+import 'package:testovoe/features/todo/presentation/pages/todo_page.dart';
 
 class HomePage extends StatefulWidget {
   final String uid;
@@ -122,6 +123,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         children: [
           PostsPage(),
           PhotosPage(),
+          TodoPage(),
         ],
       ),
     );
