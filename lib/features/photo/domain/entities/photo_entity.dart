@@ -7,13 +7,13 @@ class PhotoEntity extends Equatable {
   final String? url;
   final String? thumbnailUrl;
 
-  const PhotoEntity(
-    this.albumId,
-    this.id,
-    this.title,
-    this.url,
-    this.thumbnailUrl,
-  );
+  const PhotoEntity({
+    required this.albumId,
+    required this.id,
+    required this.title,
+    required this.url,
+    required this.thumbnailUrl,
+  });
 
   @override
   List<Object?> get props => [albumId, id, title, url, thumbnailUrl];
