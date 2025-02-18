@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testovoe/features/app/home/home_page.dart';
 import 'package:testovoe/features/app/theme/style.dart';
 import 'package:testovoe/features/post/presentation/cubit/comments/comments_cubit.dart';
 import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
@@ -44,21 +45,22 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: OnGenerateRoute.route,
         routes: {
           "/": (context) {
-            return BlocBuilder<PostsCubit, PostsState>(
-              builder: (context, state) {
-                if (state is PostsLoaded) {
-                  return PostsPage();
-                } else {
-                  Center(
-                    child: Text(
-                      'posts failed to load',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  );
-                }
-                return const SizedBox();
-              },
-            );
+            // return BlocBuilder<PostsCubit, PostsState>(
+            //   builder: (context, state) {
+            //     if (state is PostsLoaded) {
+            //       return PostsPage();
+            //     } else {
+            //       Center(
+            //         child: Text(
+            //           'posts failed to load',
+            //           style: TextStyle(color: Colors.white),
+            //         ),
+            //       );
+            //     }
+            //     return const SizedBox();
+            //   },
+            // );
+            return HomePage();
           },
         },
       ),

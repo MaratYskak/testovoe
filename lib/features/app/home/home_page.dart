@@ -3,13 +3,9 @@ import 'package:testovoe/features/app/theme/style.dart';
 import 'package:testovoe/features/photo/presentation/pages/photos_page.dart';
 import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
 import 'package:testovoe/features/todo/presentation/pages/todo_page.dart';
+import 'package:testovoe/features/user/presentation/pages/users_page.dart';
 
 class HomePage extends StatefulWidget {
-  final String uid;
-  final int? index;
-
-  const HomePage({super.key, required this.uid, this.index});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -21,7 +17,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
 
     _tabController!.addListener(() {
       setState(() {
@@ -29,12 +25,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       });
     });
 
-    if (widget.index != null) {
-      setState(() {
-        _currentTabIndex = widget.index!;
-        _tabController!.animateTo(1);
-      });
-    }
     super.initState();
   }
 
@@ -49,69 +39,33 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "WhatsApp",
-          style: TextStyle(fontSize: 20, color: greyColor, fontWeight: FontWeight.w600),
-        ),
-        actions: [
-          Row(
-            children: [
-              const Icon(
-                Icons.camera_alt_outlined,
-                color: greyColor,
-                size: 28,
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              const Icon(Icons.search, color: greyColor, size: 28),
-              const SizedBox(
-                width: 10,
-              ),
-              PopupMenuButton<String>(
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: greyColor,
-                  size: 28,
-                ),
-                color: appBarColor,
-                iconSize: 28,
-                onSelected: (value) {},
-                itemBuilder: (context) => <PopupMenuEntry<String>>[
-                  PopupMenuItem<String>(
-                    value: "Settings",
-                    child: GestureDetector(
-                        onTap: () {
-                          // Navigator.pushNamed(context, PageConst.settingsPage, arguments: widget.uid);
-                        },
-                        child: const Text('Settings')),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
         bottom: TabBar(
-          labelColor: tabColor,
+          labelColor: const Color.fromARGB(255, 134, 94, 202),
           unselectedLabelColor: greyColor,
-          indicatorColor: tabColor,
+          indicatorColor: Colors.deepPurple,
           controller: _tabController,
           tabs: const [
             Tab(
               child: Text(
-                "Chats",
+                "Posts",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
             Tab(
               child: Text(
-                "Status",
+                "Photos",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
             Tab(
               child: Text(
-                "Calls",
+                "Todo",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Tab(
+              child: Text(
+                "Users",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
@@ -124,6 +78,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           PostsPage(),
           PhotosPage(),
           TodoPage(),
+          UsersPage(),
         ],
       ),
     );

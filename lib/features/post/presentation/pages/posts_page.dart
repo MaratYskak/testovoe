@@ -20,10 +20,10 @@ class _PostsPageState extends State<PostsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Posts"),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: Text("Posts"),
+      //   centerTitle: true,
+      // ),
       body: BlocBuilder<PostsCubit, PostsState>(
         builder: (context, state) {
           if (state is PostsLoaded) {
