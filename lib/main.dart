@@ -6,6 +6,7 @@ import 'package:testovoe/features/photo/presentation/cubit/photos/photos_cubit.d
 import 'package:testovoe/features/post/presentation/cubit/comments/comments_cubit.dart';
 import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
+import 'package:testovoe/features/todo/presentation/cubit/todos_cubit.dart';
 import 'package:testovoe/routes/on_generate_routes.dart';
 import 'main_injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => di.sl<PhotosCubit>()..getPhotos(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<TodosCubit>()..getTodos(),
         ),
       ],
       child: MaterialApp(
