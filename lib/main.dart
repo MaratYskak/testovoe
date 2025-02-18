@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/home/home_page.dart';
 import 'package:testovoe/features/app/theme/style.dart';
+import 'package:testovoe/features/photo/presentation/cubit/albums/albums_cubit.dart';
+import 'package:testovoe/features/photo/presentation/cubit/photos/photos_cubit.dart';
 import 'package:testovoe/features/post/presentation/cubit/comments/comments_cubit.dart';
 import 'package:testovoe/features/post/presentation/cubit/posts/posts_cubit.dart';
 import 'package:testovoe/features/post/presentation/pages/posts_page.dart';
@@ -29,6 +31,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => di.sl<CommentsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<AlbumsCubit>()..getAlbums(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<PhotosCubit>()..getPhotos(),
         ),
       ],
       child: MaterialApp(

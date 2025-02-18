@@ -12,7 +12,7 @@ class PhotosCubit extends Cubit<PhotosState> {
 
   PhotosCubit({required this.getPhotosUsecase}) : super(PhotosInitial());
 
-  Future<void> getAlbums() async {
+  Future<void> getPhotos() async {
     try {
       emit(PhotosLoading());
       final streamResponse = getPhotosUsecase.call();
