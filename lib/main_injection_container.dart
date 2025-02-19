@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:testovoe/features/photo/photos_injection_container.dart';
 import 'package:testovoe/features/post/posts_injection_container.dart';
 import 'package:testovoe/features/todo/todos_injection_container.dart';
+import 'package:testovoe/features/user/user_injection_container.dart';
 
 final sl = GetIt.instance;
 
@@ -15,4 +16,5 @@ Future<void> init() async {
   await postsInjectionContainer();
   await photosInjectionContainer();
   await todosInjectionContainer();
+  await usersInjectionContainer();
 }
