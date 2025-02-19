@@ -11,6 +11,9 @@ class PageConst {
   // * Single Album
   static const String singleAlbumPage = "singleAlbumPage";
 
+  // * Single User
+  static const String singleUserPage = "singleUserPage";
+
   // * Home
   static const String homePage = "homePage";
 

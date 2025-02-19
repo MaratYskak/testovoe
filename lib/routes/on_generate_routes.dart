@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testovoe/features/app/const/page_const.dart';
 import 'package:testovoe/features/photo/presentation/pages/single_album_page.dart';
 import 'package:testovoe/features/post/presentation/pages/single_post_page.dart';
+import 'package:testovoe/features/user/domain/entities/user_entity.dart';
+import 'package:testovoe/features/user/presentation/pages/single_user_page.dart';
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {
@@ -23,6 +25,8 @@ class OnGenerateRoute {
         final int id = mapa['albumId'] as int;
         final String title = mapa['title'] as String;
         return materialPageBuilder(SingleAlbumPage(albumId: id, title: title));
+      case PageConst.singleUserPage:
+        return materialPageBuilder(SingleUserPage(user: args as UserEntity));
     }
   }
 }
