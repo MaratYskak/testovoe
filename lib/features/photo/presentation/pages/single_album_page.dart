@@ -47,7 +47,21 @@ class _SingleAlbumPageState extends State<SingleAlbumPage> {
             Expanded(
               child: BlocBuilder<PhotosCubit, PhotosState>(
                 builder: (context, state) {
-                  if (state is PhotosLoaded) {
+                  if (state is PhotosLoading) {
+                    return const Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircularProgressIndicator(),
+                          SizedBox(height: 16),
+                          Text(
+                            "Загружаем фотки...",
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else if (state is PhotosLoaded) {
                     final filteredPhotos = state.photos.where((photo) => photo.albumId == widget.albumId).toList();
                     return ListView.builder(
                       padding: const EdgeInsets.all(8.0),

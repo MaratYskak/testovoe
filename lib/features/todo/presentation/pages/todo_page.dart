@@ -19,7 +19,21 @@ class _TodoPageState extends State<TodoPage> {
       // ),
       body: BlocBuilder<TodosCubit, TodosState>(
         builder: (context, state) {
-          if (state is TodosLoaded) {
+          if (state is TodosLoading) {
+            return const Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text(
+                    "Загружаем тудушки...",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
+          } else if (state is TodosLoaded) {
             return ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: state.todos.length,

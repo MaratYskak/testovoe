@@ -20,7 +20,21 @@ class _PhotosPageState extends State<PhotosPage> {
       // ),
       body: BlocBuilder<AlbumsCubit, AlbumsState>(
         builder: (context, state) {
-          if (state is AlbumsLoaded) {
+          if (state is AlbumsLoading) {
+            return const Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text(
+                    "Загружаем альбомы...",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
+          } else if (state is AlbumsLoaded) {
             return ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: state.albums.length,

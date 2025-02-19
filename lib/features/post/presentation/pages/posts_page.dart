@@ -26,7 +26,21 @@ class _PostsPageState extends State<PostsPage> {
       // ),
       body: BlocBuilder<PostsCubit, PostsState>(
         builder: (context, state) {
-          if (state is PostsLoaded) {
+          if (state is PostsLoading) {
+            return const Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text(
+                    "Загружаем посты...",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
+          } else if (state is PostsLoaded) {
             return ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: state.posts.length,

@@ -51,7 +51,21 @@ class _SinglePostPageState extends State<SinglePostPage> {
             Expanded(
               child: BlocBuilder<CommentsCubit, CommentsState>(
                 builder: (context, state) {
-                  if (state is CommentsLoaded) {
+                  if (state is CommentsLoading) {
+                    return const Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircularProgressIndicator(),
+                          SizedBox(height: 16),
+                          Text(
+                            "Загружаем комменты...",
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else if (state is CommentsLoaded) {
                     final filteredComments =
                         state.comments.where((comment) => comment.postId == widget.postId_and_post['postId']).toList();
                     return ListView.builder(

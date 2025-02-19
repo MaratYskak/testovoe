@@ -15,30 +15,31 @@ class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Posts"),
-      //   centerTitle: true,
-      // ),
       body: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
-          if (state is UsersLoaded) {
+          if (state is UsersLoading) {
+            return const Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text(
+                    "Загружаем пользователей...",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
+          } else if (state is UsersLoaded) {
             return ListView.builder(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               itemCount: state.users.length,
               itemBuilder: (context, index) {
                 final user = state.users[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, PageConst.singleUserPage,
-                        arguments: UserEntity(
-                            address: user.address,
-                            company: user.company,
-                            email: user.email,
-                            id: user.id,
-                            name: user.name,
-                            phone: user.phone,
-                            username: user.username,
-                            website: user.website));
+                    Navigator.pushNamed(context, PageConst.singleUserPage, arguments: user);
                   },
                   child: Card(
                     color: const Color.fromARGB(255, 34, 59, 102),
@@ -47,21 +48,21 @@ class _UsersPageState extends State<UsersPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'username: ${user.username}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
                             'name: ${user.name}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -74,7 +75,7 @@ class _UsersPageState extends State<UsersPage> {
               },
             );
           } else {
-            return Center(
+            return const Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
