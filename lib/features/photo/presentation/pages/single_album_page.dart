@@ -66,7 +66,8 @@ class _SingleAlbumPageState extends State<SingleAlbumPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.network(
-                                  photo.url!,
+                                  // photo.url!,
+                                  photo.thumbnailUrl!,
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   // height: 200,
